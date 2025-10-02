@@ -465,54 +465,59 @@ async def verify_answer(data: dict, game_data: any):
 
 @sio.event
 async def submit_answer(sid: str, data: dict):
-    now = datetime.now()
     try:
-        data = _SubmitAnswerData(**data)
-    except ValidationError as e:
-        await sio.emit("error", room=sid)
-        print(e)
-        return
-    data.answer = str(data.answer)
-    session = await get_session(sid, sio)
-    game_data = PlayGame.model_validate_json(await redis.get(f"game:{session['game_pin']}"))
-    answer_right = await verify_answer(data, game_data)
-    latency = int(float((await get_session(sid, sio))["ping"]))
-    time_q_started = datetime.fromisoformat(await redis.get(f"game:{session['game_pin']}:current_time"))
+        now = datetime.now()
+        try:
+            data = _SubmitAnswerData(**data)
+        except ValidationError as e:
+            await sio.emit("error", room=sid)
+            print(e)
+            return
+        data.answer = str(data.answer)
+        session = await get_session(sid, sio)
+        game_data = PlayGame.model_validate_json(await redis.get(f"game:{session['game_pin']}"))
+        answer_right = await verify_answer(data, game_data)
+        latency = int(float((await get_session(sid, sio))["ping"]))
+        time_q_started = datetime.fromisoformat(await redis.get(f"game:{session['game_pin']}:current_time"))
 
-    diff = (time_q_started - now).total_seconds() * 1000  # - timedelta(milliseconds=latency)
-    score = 0
-    if answer_right:
-        score = calculate_score(
-            abs(diff) - latency,
-            int(float(game_data.questions[int(float(data.question_index))].time)),
+        diff = (time_q_started - now).total_seconds() * 1000  # - timedelta(milliseconds=latency)
+        score = 0
+        if answer_right:
+            score = calculate_score(
+                abs(diff) - latency,
+                int(float(game_data.questions[int(float(data.question_index))].time)),
+            )
+            if score > 1000:
+                score = 1000
+        # TODO: If has already replied, return
+        answers = await redis.get(f"game_session:{session['game_pin']}:{data.question_index}")
+        already_replied = check_already_replied(answers, session["username"])
+        if already_replied:
+            await sio.emit("already_replied", room=sid)
+            return
+        # ---
+        total_score = await redis.hincrby(f"game_session:{session['game_pin']}:player_scores", session["username"], score)
+        answer_data = AnswerData(
+            username=session["username"],
+            answer=data.answer,
+            right=answer_right,
+            time_taken=abs(diff) - latency,
+            score=score,
+            total_score=total_score,
         )
-        if score > 1000:
-            score = 1000
-    # TODO: If has already replied, return
-    answers = await redis.get(f"game_session:{session['game_pin']}:{data.question_index}")
-    already_replied = check_already_replied(answers, session["username"])
-    if already_replied:
-        await sio.emit("already_replied", room=sid)
-        return
-    # ---
-    total_score = await redis.hincrby(f"game_session:{session['game_pin']}:player_scores", session["username"], score)
-    answer_data = AnswerData(
-        username=session["username"],
-        answer=data.answer,
-        right=answer_right,
-        time_taken=abs(diff) - latency,
-        score=score,
-        total_score=total_score,
-    )
-    answers = await set_answer(
-        answers,
-        game_pin=session["game_pin"],
-        data=answer_data,
-        q_index=int(float(data.question_index)),
-    )
-    player_count = await redis.scard(f"game_session:{session['game_pin']}:players")
-    await sio.emit("player_answer", {})
-    if len(answers) == player_count:
+        answers = await set_answer(
+            answers,
+            game_pin=session["game_pin"],
+            data=answer_data,
+            q_index=int(float(data.question_index)),
+        )
+        player_count = await redis.scard(f"game_session:{session['game_pin']}:players")
+        await sio.emit("player_answer", {})
+        if len(answers) == player_count:
+            await sio.emit("question_results", answers, room=session["game_pin"])
+    except Exception as e:
+        print(f"Error in submit_answer for {sid}: {e}")
+        await sio.emit("error", {"message": "Failed to submit answer"}, room=sid)
         # await sio.emit(
         #     "question_results",
         #     await redis.get(f"game_session:{session['game_pin']}:{data.question_index}"),
@@ -663,3 +668,17 @@ async def connect(sid: str, _environ, _auth):
     sio_session = {"session_id": session_id}
     await sio.save_session(sid, sio_session)
     await sio.emit("session_id", ConnectSessionIdEvent(session_id=session_id).dict())
+
+
+@sio.event
+async def disconnect(sid: str):
+    print(f"Client {sid} disconnected")
+
+
+@sio.error_handler
+async def error_handler(sid: str, error: Exception):
+    print(f"Socket error for {sid}: {error}")
+    try:
+        await sio.emit("error", {"message": "An error occurred"}, room=sid)
+    except Exception as e:
+        print(f"Failed to emit error to client {sid}: {e}")
