@@ -81,7 +81,7 @@ SPDX-License-Identifier: MPL-2.0
 </script>
 
 <div class="w-full max-h-full pb-10 px-10 h-full">
-	<div class="rounded-lg bg-white w-full h-full border-gray-500 dark:bg-gray-700 shadow-2xl">
+	<div class="rounded-lg modern-card w-full h-full">
 		<div class="h-12 bg-gray-300 rounded-t-lg dark:bg-gray-500">
 			<div class="flex align-middle p-4 gap-3">
 				<span

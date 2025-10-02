@@ -57,7 +57,7 @@ SPDX-License-Identifier: MPL-2.0
 
 	<form on:submit|preventDefault={continue_in_login}>
 		<div class="w-full mt-4">
-			<div class="dark:bg-gray-800 bg-white p-4 rounded-lg">
+			<div class="dark:bg-gray-800/80 bg-white/80 backdrop-blur-sm p-4 rounded-lg">
 				<div class="relative bg-inherit w-full">
 					<input
 						id="password"

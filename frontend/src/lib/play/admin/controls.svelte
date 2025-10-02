@@ -56,7 +56,7 @@ SPDX-License-Identifier: MPL-2.0
 	<div class="justify-self-end ml-auto mr-0 col-start-3 col-end-3">
 		{#if selected_question + 1 === quiz_data.questions.length && ((timer_res === '0' && question_results !== null) || quiz_data?.questions?.[selected_question]?.type === QuizQuestionType.SLIDE)}
 			{#if JSON.stringify(final_results) === JSON.stringify([null])}
-				<button on:click={get_final_results} class="admin-button"
+				<button on:click={get_final_results} class="modern-button"
 					>{$t('admin_page.get_final_results')}
 				</button>
 			{/if}
@@ -66,7 +66,7 @@ SPDX-License-Identifier: MPL-2.0
 					on:click={() => {
 						set_question_number(selected_question + 1);
 					}}
-					class="admin-button"
+					class="modern-button"
 					>{$t('admin_page.next_question', { question: selected_question + 2 })}
 				</button>
 			{/if}
@@ -76,7 +76,7 @@ SPDX-License-Identifier: MPL-2.0
 						on:click={() => {
 							set_question_number(selected_question + 1);
 						}}
-						class="admin-button"
+						class="modern-button"
 						>{$t('admin_page.next_question', { question: selected_question + 2 })}
 					</button>
 				{:else}
@@ -91,7 +91,7 @@ SPDX-License-Identifier: MPL-2.0
 					on:click={() => {
 						set_question_number(selected_question + 1);
 					}}
-					class="admin-button"
+					class="modern-button"
 					>{$t('admin_page.next_question', { question: selected_question + 2 })}
 				</button>
 			{:else}
