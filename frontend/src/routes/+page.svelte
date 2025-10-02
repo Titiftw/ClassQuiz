@@ -215,13 +215,13 @@ SPDX-License-Identifier: MPL-2.0
 	<section>
 		<h2 class="text-center text-5xl mb-6">{$t('index_page.how_does_classquiz_work')}</h2>
 
-		<div class="flex justify-center w-full">
-			<h3 class="text-center text-3xl rounded-t-lg bg-white/40 py-2 px-6">
+        <div class="flex justify-center w-full">
+            <h3 class="text-center text-3xl rounded-t-lg card py-2 px-6">
 				{$t('index_page.get_a_quiz')}
 			</h3>
 		</div>
 		<div
-			class="grid grid-rows-2 lg:grid-rows-1 lg:grid-cols-2 bg-white/40 shadow-lg mb-12 lg:mx-12 mx-4 rounded-lg"
+            class="grid grid-rows-2 lg:grid-rows-1 lg:grid-cols-2 card shadow-lg mb-12 lg:mx-12 mx-4 rounded-lg"
 		>
 			<div>
 				<div class="p-2 rounded-lg">
@@ -251,76 +251,74 @@ SPDX-License-Identifier: MPL-2.0
 					{/if}
 				</div>
 			</div>
-			<div
-				class="lg:border-l lg:border-l-black lg:border-t-0 border-t border-t-black flex lg:flex-col flex-row stretch"
-			>
-				<div
-					class="m-2 rounded-lg p-2 bg-white/40 transition-all cursor-pointer lg:h-full"
-					onclick={() => {
-						selected_create_thing = SelectedCreateThing.Create;
-					}}
-					onkeyup={() => {
-						selected_create_thing = SelectedCreateThing.Create;
-					}}
-					class:shadow-2xl={selected_create_thing === SelectedCreateThing.Create}
-					class:opacity-70={selected_create_thing !== SelectedCreateThing.Create}
-				>
-					<div
-						class="rounded-lg w-fit p-1 bg-lime-500 hover:bg-lime-400 transition shadow-lg"
-					>
-						<svg
-							aria-label="Pencil-Icon"
-							class="w-8 h-8 text-black"
-							fill="none"
-							stroke="currentColor"
-							viewBox="0 0 24 24"
-							xmlns="http://www.w3.org/2000/svg"
-						>
-							<path
-								stroke-linecap="round"
-								stroke-linejoin="round"
-								stroke-width="2"
-								d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"
-							/>
-						</svg>
-					</div>
-					<h5 class="text-xl w-fit dark:text-black">{$t('words.create')}</h5>
-					<p class="dark:text-black">{$t('index_page.create_a_quiz_from_scratch')}</p>
-				</div>
-				<div
-					class="m-2 rounded-lg p-2 bg-white/40 transition-all cursor-pointer lg:h-full"
-					onclick={() => {
-						selected_create_thing = SelectedCreateThing.Find;
-					}}
-					onkeyup={() => {
-						selected_create_thing = SelectedCreateThing.Find;
-					}}
-					class:shadow-2xl={selected_create_thing === SelectedCreateThing.Find}
-					class:opacity-70={selected_create_thing !== SelectedCreateThing.Find}
-				>
-					<div
-						class="rounded-lg w-fit p-1 bg-lime-500 hover:bg-lime-400 transition shadow-lg"
-					>
-						<svg
-							class="w-8 h-8 text-black"
-							fill="none"
-							stroke="currentColor"
-							viewBox="0 0 24 24"
-							xmlns="http://www.w3.org/2000/svg"
-							aria-label="magnifying glass-Icon"
-						>
-							<path
-								stroke-linecap="round"
-								stroke-linejoin="round"
-								stroke-width="2"
-								d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-							/>
-						</svg>
-					</div>
-					<h5 class="text-xl dark:text-black">{$t('words.find')}</h5>
-					<p class="dark:text-black">{$t('index_page.find_or_explore')}</p>
-				</div>
-				<!--<div
+            <div class="lg:border-l border-black/10 dark:border-white/10 lg:border-t-0 border-t flex lg:flex-col flex-row stretch">
+                <div
+                    class="m-2 rounded-lg p-2 card transition-all cursor-pointer lg:h-full"
+                    onclick={() => {
+                        selected_create_thing = SelectedCreateThing.Create;
+                    }}
+                    onkeyup={() => {
+                        selected_create_thing = SelectedCreateThing.Create;
+                    }}
+                    class:shadow-2xl={selected_create_thing === SelectedCreateThing.Create}
+                    class:opacity-70={selected_create_thing !== SelectedCreateThing.Create}
+                >
+                    <div
+                        class="rounded-lg w-fit p-1 bg-lime-500 hover:bg-lime-400 transition shadow-lg"
+                    >
+                        <svg
+                            aria-label="Pencil-Icon"
+                            class="w-8 h-8 text-black"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"
+                            />
+                        </svg>
+                    </div>
+                    <h5 class="text-xl w-fit dark:text-black">{$t('words.create')}</h5>
+                    <p class="dark:text-black">{$t('index_page.create_a_quiz_from_scratch')}</p>
+                </div>
+                <div
+                    class="m-2 rounded-lg p-2 card transition-all cursor-pointer lg:h-full"
+                    onclick={() => {
+                        selected_create_thing = SelectedCreateThing.Find;
+                    }}
+                    onkeyup={() => {
+                        selected_create_thing = SelectedCreateThing.Find;
+                    }}
+                    class:shadow-2xl={selected_create_thing === SelectedCreateThing.Find}
+                    class:opacity-70={selected_create_thing !== SelectedCreateThing.Find}
+                >
+                    <div
+                        class="rounded-lg w-fit p-1 bg-lime-500 hover:bg-lime-400 transition shadow-lg"
+                    >
+                        <svg
+                            class="w-8 h-8 text-black"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg"
+                            aria-label="magnifying glass-Icon"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                            />
+                        </svg>
+                    </div>
+                    <h5 class="text-xl dark:text-black">{$t('words.find')}</h5>
+                    <p class="dark:text-black">{$t('index_page.find_or_explore')}</p>
+                </div>
+                <!--<div
 					class="m-2 rounded-lg p-2 bg-opacity-40 bg-white transition-all cursor-pointer lg:h-full"
 					on:click={() => {
 						selected_create_thing = SelectedCreateThing.Import;
@@ -352,19 +350,19 @@ SPDX-License-Identifier: MPL-2.0
 						{$t('index_page.import_quiz_from_kahoot_and_edit')}
 					</p>
 				</div>-->
-			</div>
+            </div>
 		</div>
 	</section>
 
 	<section class="mt-24">
 		<div class="flex justify-center w-full">
-			<h2 class="text-center text-3xl rounded-t-lg bg-white/40 py-2 px-6">
+			<h2 class="text-center text-3xl rounded-t-lg card py-2 px-6">
 				{$t('index_page.play_quiz')}
 			</h2>
 		</div>
 
 		<div
-			class="grid grid-rows-2 lg:grid-rows-1 lg:grid-cols-2 bg-white/40 shadow-lg mb-12 lg:mx-12 mx-4 rounded-lg"
+            class="grid grid-rows-2 lg:grid-rows-1 lg:grid-cols-2 card shadow-lg mb-12 lg:mx-12 mx-4 rounded-lg"
 		>
 			<div>
 				<div class="p-2 rounded-lg">
@@ -394,11 +392,9 @@ SPDX-License-Identifier: MPL-2.0
 					{/if}
 				</div>
 			</div>
-			<div
-				class="lg:border-l lg:border-l-black lg:border-t-0 border-t border-t-black flex lg:flex-col flex-row stretch"
-			>
+			<div class="lg:border-l border-black/10 dark:border-white/10 lg:border-t-0 border-t flex lg:flex-col flex-row stretch">
 				<div
-					class="m-2 rounded-lg p-2 bg-white/40 transition-all cursor-pointer lg:h-full"
+					class="m-2 rounded-lg p-2 card transition-all cursor-pointer lg:h-full"
 					onclick={() => {
 						selected_play_thing = SelectedPlayThing.Select;
 					}}
@@ -431,7 +427,7 @@ SPDX-License-Identifier: MPL-2.0
 					<p class="dark:text-black">{$t('index_page.choose_answer_wisely')}</p>
 				</div>
 				<div
-					class="m-2 rounded-lg p-2 bg-white/40 transition-all cursor-pointer lg:h-full"
+					class="m-2 rounded-lg p-2 card transition-all cursor-pointer lg:h-full"
 					onclick={() => {
 						selected_play_thing = SelectedPlayThing.Results;
 					}}
@@ -464,7 +460,7 @@ SPDX-License-Identifier: MPL-2.0
 					<p class="dark:text-black">{$t('index_page.check_if_chosen_wisely')}</p>
 				</div>
 				<div
-					class="m-2 rounded-lg p-2 bg-white/40 transition-all cursor-pointer lg:h-full"
+					class="m-2 rounded-lg p-2 card transition-all cursor-pointer lg:h-full"
 					onclick={() => {
 						selected_play_thing = SelectedPlayThing.Winners;
 					}}
@@ -502,41 +498,41 @@ SPDX-License-Identifier: MPL-2.0
 
 	<section class="mt-24">
 		<div class="flex justify-center w-full">
-			<h2 class="text-center text-3xl rounded-t-lg bg-white/40 py-2 px-6">
+			<h2 class="text-center text-3xl rounded-t-lg card py-2 px-6">
 				{$t('index_page.why_classquiz')}
 			</h2>
 		</div>
 
 		<div
-			class="grid grid-rows-2 lg:grid-rows-1 lg:grid-cols-2 bg-white/40 shadow-lg mb-12 lg:mx-12 mx-4 rounded-lg"
-		>
-			<div>
-				<div class="p-12 rounded-lg flex justify-center items-center h-full">
-					<p class="dark:text-black">
-						{classquiz_reasons[selected_classquiz_reason].content}
-					</p>
-				</div>
-			</div>
-			<div
-				class="lg:border-l lg:border-l-black lg:border-t-0 border-t border-t-black flex lg:flex-col flex-row stretch overflow-x-auto why-classquiz"
-			>
-				{#each classquiz_reasons as reason, index}
-					<div
-						class="m-2 rounded-lg p-2 bg-white/40 transition-all cursor-pointer lg:h-full"
-						onclick={() => {
-							selected_classquiz_reason = index;
-						}}
-						onkeyup={() => {
-							selected_classquiz_reason = index;
-						}}
-						class:shadow-2xl={selected_classquiz_reason === index}
-						class:opacity-70={selected_classquiz_reason !== index}
-					>
-						<h5 class="text-xl dark:text-black">{reason.headline}</h5>
-					</div>
-				{/each}
-			</div>
-		</div>
+            class="grid grid-rows-2 lg:grid-rows-1 lg:grid-cols-2 card shadow-lg mb-12 lg:mx-12 mx-4 rounded-lg"
+        >
+            <div>
+                <div class="p-12 rounded-lg flex justify-center items-center h-full">
+                    <p class="dark:text-black">
+                        {classquiz_reasons[selected_classquiz_reason].content}
+                    </p>
+                </div>
+            </div>
+            <div
+                class="lg:border-l border-black/10 dark:border-white/10 lg:border-t-0 border-t flex lg:flex-col flex-row stretch overflow-x-auto why-classquiz"
+            >
+                {#each classquiz_reasons as reason, index}
+                    <div
+                        class="m-2 rounded-lg p-2 card transition-all cursor-pointer lg:h-full"
+                        onclick={() => {
+                            selected_classquiz_reason = index;
+                        }}
+                        onkeyup={() => {
+                            selected_classquiz_reason = index;
+                        }}
+                        class:shadow-2xl={selected_classquiz_reason === index}
+                        class:opacity-70={selected_classquiz_reason !== index}
+                    >
+                        <h5 class="text-xl dark:text-black">{reason.headline}</h5>
+                    </div>
+                {/each}
+            </div>
+        </div>
 	</section>
 </div>
 {#if newsletterModalOpen}

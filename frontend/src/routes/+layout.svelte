@@ -127,28 +127,18 @@ SPDX-License-Identifier: MPL-2.0
 {/if}-->
 
 <style lang="scss">
-	:global(html:not(.dark)) {
-		// height: 100%;
-		// width: 100%;
+:global(html:not(.dark)) {
+    background: radial-gradient(1200px 600px at 0% 0%, #f7fafc 0%, #eef2f7 40%, #e9eef6 60%, #e7ecf5 100%),
+      linear-gradient(135deg, #f9fbff, #f3f6fb);
+    background-attachment: fixed;
+    color: var(--text);
+}
 
-		// bg-gradient-to-r from-[#009444] via-[#39b54a] to-[#8dc63f]
-		//background: linear-gradient(to right, #009444, #39b54a, #8dc63f) repeat-y;
-		background-color: #d6edc9;
-		background-size: cover;
-		/*background: linear-gradient(-225deg, #231557 0%, #44107A 29%, #FF1361 67%, #FFF800 100%); */
-		/*background: linear-gradient(-225deg, #22E1FF 0%, #1D8FE1 48%, #625EB1 100%); */
-		color: black;
-
-		// background-size: 400% 400%;
-
-		//animation: background_animation 5s ease infinite;
-	}
-
-	:global(html.dark) {
-		//background-color: #0f2702;
-		background-color: #4e6e58;
-		background-size: cover;
-		color: white;
+:global(html.dark) {
+    background: radial-gradient(1200px 600px at 0% 0%, #0b0f14 0%, #0f141b 40%, #121922 70%, #141b25 100%),
+      linear-gradient(135deg, #0b0f14, #0e141c);
+    background-attachment: fixed;
+    color: var(--text);
 
 		:global(#pips-slider) {
 			--pip: white;

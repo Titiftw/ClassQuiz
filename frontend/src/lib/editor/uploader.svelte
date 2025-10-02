@@ -171,8 +171,8 @@ let music_popup: undefined | WindowProxy = undefined;
 		onclick={handle_on_click}
 		transition:fade={{ duration: 100 }}
 	>
-		{#if selected_type === null}
-            <div class="m-auto w-1/2 h-auto bg-white dark:bg-gray-700 p-4 rounded">
+        {#if selected_type === null}
+            <div class="m-auto w-1/2 h-auto modal-panel p-4">
 				<h1 class="text-3xl text-center mb-4">{$t('uploader.select_upload_type')}</h1>
 				<div class="flex flex-row gap-4">
 					<div class="w-full">
@@ -253,11 +253,8 @@ let music_popup: undefined | WindowProxy = undefined;
 					{$t('youtube.set_url')}
 				</button>
 			</div>
-		{:else if selected_type === AvailableUploadTypes.Video}
-			<div
-				class="m-auto w-1/3 h-auto bg-white dark:bg-gray-700 p-4 rounded-sm"
-				transition:fade={{ duration: 100 }}
-			>
+        {:else if selected_type === AvailableUploadTypes.Video}
+            <div class="m-auto w-1/3 h-auto modal-panel p-4" transition:fade={{ duration: 100 }}>
 				<h1 class="text-3xl text-center mb-4">{$t('uploader.upload_a_video')}</h1>
 				{#if video_popup}
 					<p class="text-center">
@@ -269,11 +266,8 @@ let music_popup: undefined | WindowProxy = undefined;
 					>
 				{/if}
 			</div>
-		{:else if selected_type === AvailableUploadTypes.Music}
-			<div
-				class="m-auto w-1/3 h-auto bg-white dark:bg-gray-700 p-4 rounded"
-				transition:fade|local={{ duration: 100 }}
-			>
+        {:else if selected_type === AvailableUploadTypes.Music}
+            <div class="m-auto w-1/3 h-auto modal-panel p-4" transition:fade|local={{ duration: 100 }}>
 				<h1 class="text-3xl text-center mb-4">{$t('uploader.upload_a_music')}</h1>
 				{#if video_popup}
 					<p class="text-center">

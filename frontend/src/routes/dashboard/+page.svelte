@@ -143,12 +143,12 @@ SPDX-License-Identifier: MPL-2.0
 			/>
 		</svg>
 	{:else}
-		<div class="flex flex-col w-full mx-auto">
+        <div class="flex flex-col w-full mx-auto">
 			<!--		<button
                     class='px-4 py-2 font-medium tracking-wide text-gray-500 whitespace-nowrap dark:text-gray-400 capitalize transition-colors dark:bg-gray-700 duration-200 transform bg-[#B07156] rounded-md hover:bg-green-600 focus:outline-hidden focus:ring focus:ring-blue-300 focus:ring-opacity-80'>
                     Primary
                 </button>-->
-			<div class="w-full grid lg:grid-cols-4 gap-2 grid-cols-2 px-4">
+            <div class="w-full grid lg:grid-cols-4 gap-3 grid-cols-2 px-4">
 				{#if create_button_clicked}
 					<div
 						class="flex gap-2"
@@ -176,12 +176,12 @@ SPDX-License-Identifier: MPL-2.0
 				</div>
 			</div>
 			{#if all_items.length !== 0}
-				<div class="flex justify-center pt-4 w-full">
+                <div class="flex justify-center pt-4 w-full">
 					<div>
 						<div>
-							<input
+                            <input
 								bind:value={search_term}
-								class="p-2 rounded-lg outline-hidden text-center w-96 dark:bg-gray-700"
+                                class="input-base text-center w-96"
 								placeholder={$t('dashboard.search_for_own_quizzes')}
 							/>
 							<button
@@ -208,10 +208,10 @@ SPDX-License-Identifier: MPL-2.0
 						</div>
 					</div>
 				</div>
-				<div class="flex flex-col gap-4 mt-4 px-2">
+                <div class="flex flex-col gap-4 mt-4 px-2">
 					{#each items_to_show as quiz}
 						<div
-							class="grid grid-cols-2 lg:grid-cols-3 w-full rounded-sm border-[#B07156] border-2 p-2 h-[20vh] overflow-hidden max-h-[20vh]"
+                            class="grid grid-cols-2 lg:grid-cols-3 w-full card p-3 h-[20vh] overflow-hidden max-h-[20vh]"
 						>
 							<div class="hidden lg:flex w-auto h-full items-center relative">
 								{#if quiz.cover_image}
@@ -228,8 +228,8 @@ SPDX-License-Identifier: MPL-2.0
 								{/if}
 							</div>
 							<div class="my-auto mx-auto max-h-full overflow-hidden">
-								<p class="text-xl text-center">{@html quiz.title}</p>
-								<p class="text-sm text-center text-clip overflow-hidden">
+                                <p class="text-xl text-center">{@html quiz.title}</p>
+                                <p class="text-sm text-center text-clip overflow-hidden text-[color:var(--text-muted)]">
 									{@html quiz.description ?? ''}
 								</p>
 							</div>

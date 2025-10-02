@@ -45,7 +45,7 @@ SPDX-License-Identifier: MPL-2.0
 	};
 </script>
 
-<nav class="w-screen px-4 lg:px-10 py-2 fixed backdrop-blur-2xl bg-white/70 shadow-md z-30 top-0">
+<nav class="w-screen px-4 lg:px-10 py-2 fixed backdrop-blur-2xl bg-white/70 dark:bg-[color:var(--surface)]/60 shadow-md z-30 top-0 border-b border-black/5 dark:border-white/10">
 	<!-- Desktop navbar -->
 	<div class="hidden lg:flex lg:items-center lg:flex-row lg:justify-between">
 		<div class="lg:flex lg:items-center lg:flex-row gap-1">
@@ -54,7 +54,7 @@ SPDX-License-Identifier: MPL-2.0
 				class="font-black tracking-tight text-xl lg:text-2xl text-black marck-script link-hover px-3 lg:px-5"
 				>ClassQuiz</a
 			>
-			<a class="btn-nav border-2 rounded-sm" href="/play">{$t('words.play')}</a>
+            <a class="btn-nav border rounded-lg border-black/10 dark:border-white/10" href="/play">{$t('words.play')}</a>
 			<a class="btn-nav" href="/explore">{$t('words.explore')}</a>
 			<a class="btn-nav" href="/search">{$t('words.search')}</a>
 			{#if $signedIn}
