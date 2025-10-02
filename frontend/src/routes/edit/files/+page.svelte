@@ -227,7 +227,7 @@ const files = data.images;
 	>
 		<div class="w-auto h-auto m-auto rounded bg-white dark:bg-gray-700 p-4">
 			<h1 class="text-2xl text-center">{$t('file_dashboard.edit_the_file')}</h1>
-			<form class="flex flex-col" on:submit|preventDefault={save_file_metadata}>
+			<form class="flex flex-col" onsubmit={save_file_metadata}>
 				<div class="flex flex-row">
 					<div class="flex flex-col mr-4">
 						<label for="name" class="m-auto">{$t('file_dashboard.filename_word')}</label

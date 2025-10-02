@@ -229,7 +229,7 @@ SPDX-License-Identifier: MPL-2.0
 </div>
 <a
 	onclick={preventDefault(request_answer_export)}
-	href="#"
+	href=""
 	target="_blank"
 	bind:this={dataexport_download_a}
 	download=""

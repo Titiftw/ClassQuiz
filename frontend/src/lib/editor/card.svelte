@@ -196,7 +196,7 @@ SPDX-License-Identifier: MPL-2.0
 							<button
 								class="rounded-full absolute -top-2 -right-2 opacity-70 hover:opacity-100 transition"
 								type="button"
-								on:click={() => {
+								onclick={() => {
 									data.questions[selected_question].youtube_url = null;
 								}}
 							>
@@ -232,7 +232,7 @@ SPDX-License-Identifier: MPL-2.0
 							<button
 								class="rounded-full absolute -top-2 -right-2 opacity-70 hover:opacity-100 transition"
 								type="button"
-								on:click={() => {
+								onclick={() => {
 									data.questions[selected_question].music = null;
 								}}
 							>
@@ -357,7 +357,7 @@ SPDX-License-Identifier: MPL-2.0
 				/>
 			</label>
 			<div class="mt-auto w-full">
-				<BrownButton on:click={() => (advanced_options_open = false)}
+				<BrownButton onclick={() => (advanced_options_open = false)}
 					>{$t('words.close')}</BrownButton
 				>
 			</div>

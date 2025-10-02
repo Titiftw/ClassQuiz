@@ -26,14 +26,16 @@ SPDX-License-Identifier: MPL-2.0
 	import Pixabay from '$lib/editor/uploader/Pixabay.svelte';
 
 	const { t } = getLocalization();
-export let modalOpen = false;
-export let edit_id: string;
-export let data: EditorData;
-export let selected_question: number;
-export let video_upload = false;
-export let library_enabled = true;
-export let youtube_url: string;
-export let music: string;
+	let {
+		modalOpen = false,
+		edit_id,
+		data,
+		selected_question,
+		video_upload = false,
+		library_enabled = true,
+		youtube_url,
+		music
+	} = $props();
 
 // eslint-disable-next-line no-undef
 let video_popup: undefined | WindowProxy = undefined;
@@ -177,7 +179,7 @@ let music_popup: undefined | WindowProxy = undefined;
 				<div class="flex flex-row gap-4">
 					<div class="w-full">
 						<BrownButton
-							on:click={() => {
+							onclick={() => {
 								selected_type = AvailableUploadTypes.Image;
 							}}
 							>{$t('words.image')}
@@ -186,7 +188,7 @@ let music_popup: undefined | WindowProxy = undefined;
 					<div class="w-full">
 						<BrownButton
 							disabled={!video_upload}
-							on:click={() => {
+							onclick={() => {
 								selected_type = AvailableUploadTypes.Video;
 							}}
 							>{$t('words.video')}
@@ -194,7 +196,7 @@ let music_popup: undefined | WindowProxy = undefined;
 					</div>
 					<div class="w-full">
 						<BrownButton
-							on:click={() => {
+							onclick={() => {
 								selected_type = AvailableUploadTypes.YouTube;
 							}}
 							>{$t('words.youtube')}
@@ -202,7 +204,7 @@ let music_popup: undefined | WindowProxy = undefined;
 					</div>
 					<div class="w-full">
 						<BrownButton
-							on:click={() => {
+							onclick={() => {
 								selected_type = AvailableUploadTypes.Music;
 							}}
 							>{$t('words.music')}
@@ -211,7 +213,7 @@ let music_popup: undefined | WindowProxy = undefined;
 					{#if library_enabled}
 						<div class="w-full">
 							<BrownButton
-								on:click={() => {
+								onclick={() => {
 									selected_type = AvailableUploadTypes.Library;
 								}}
 								>{$t('words.library')}
@@ -220,7 +222,7 @@ let music_popup: undefined | WindowProxy = undefined;
 					{/if}
 					<div class="w-full">
 						<BrownButton
-							on:click={() => {
+							onclick={() => {
 								selected_type = AvailableUploadTypes.Pixabay;
 							}}
 							>Pixabay
@@ -246,7 +248,7 @@ let music_popup: undefined | WindowProxy = undefined;
 				</div>
 				<button
 					class="mt-auto mx-auto bg-green-500 p-4 rounded-lg shadow-lg hover:bg-green-400 transition-all marck-script text-2xl"
-					on:click={() => {
+					onclick={() => {
 						set_youtube_video();
 					}}
 				>
@@ -261,7 +263,7 @@ let music_popup: undefined | WindowProxy = undefined;
 						{$t('uploader.upload_video_popup_notice')}
 					</p>
 				{:else}
-					<BrownButton on:click={upload_video} type="button"
+					<BrownButton onclick={upload_video} type="button"
 						>{$t('uploader.upload_video')}</BrownButton
 					>
 				{/if}
@@ -274,7 +276,7 @@ let music_popup: undefined | WindowProxy = undefined;
 						{$t('uploader.upload_music_popup_notice')}
 					</p>
 				{:else}
-					<BrownButton on:click={upload_music} type="button"
+					<BrownButton onclick={upload_music} type="button"
 						>{$t('uploader.upload_music')}</BrownButton
 					>
 				{/if}

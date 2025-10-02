@@ -6,7 +6,7 @@ SPDX-License-Identifier: MPL-2.0
 
 <script lang="ts">
 	import BrownButton from '$lib/components/buttons/brown.svelte';
-	import { navbarVisible } from '$lib/stores';
+	import { navbarVisible } from '$lib/stores.svelte';
 	import { getLocalization } from '$lib/i18n';
 	const { t } = getLocalization();
 
@@ -95,36 +95,40 @@ SPDX-License-Identifier: MPL-2.0
 	<div class="mt-auto flex justify-center">
 		{#if status === Status.Compressing || status === Status.CompressDone}
 			<table>
-				<tr>
-					<th>{$t('words.speed')}</th>
-					<th>{$t('words.progress')}</th>
-					<th>{$t('music_uploader.time_elapsed')}</th>
-					<th>{$t('music_uploader.time_remaining')}</th>
-				</tr>
-				<tr>
-					<td>{stats.speed}</td>
-					<td>{Math.round(stats.progress * 100)}%</td>
-					<td>{upload_stats.time_elapsed.toFixed(2)}s</td>
-					<td
-						>{(stats.time_elapsed / stats.progress - upload_stats.time_elapsed).toFixed(
-							2
-						)}s</td
-					>
-				</tr>
+				<tbody>
+					<tr>
+						<th>{$t('words.speed')}</th>
+						<th>{$t('words.progress')}</th>
+						<th>{$t('music_uploader.time_elapsed')}</th>
+						<th>{$t('music_uploader.time_remaining')}</th>
+					</tr>
+					<tr>
+						<td>{stats.speed}</td>
+						<td>{Math.round(stats.progress * 100)}%</td>
+						<td>{upload_stats.time_elapsed.toFixed(2)}s</td>
+						<td
+							>{(stats.time_elapsed / stats.progress - upload_stats.time_elapsed).toFixed(
+								2
+							)}s</td
+						>
+					</tr>
+				</tbody>
 			</table>
 		{:else if status === Status.Uploading}
 			<table>
-				<tr>
-					<th>{$t('words.progress')}</th>
-					<th>{$t('music_uploader.time_elapsed')}</th>
-					<th>{$t('music_uploader.time_remaining')}</th>
-				</tr>
-				<tr>
-					<td>{Math.round(upload_stats.progress * 100)}%</td>
-					<td>{stats.time_elapsed.toFixed(2)}s</td>
-					<td>{(stats.time_elapsed / stats.progress - stats.time_elapsed).toFixed(2)}s</td
-					>
-				</tr>
+				<tbody>
+					<tr>
+						<th>{$t('words.progress')}</th>
+						<th>{$t('music_uploader.time_elapsed')}</th>
+						<th>{$t('music_uploader.time_remaining')}</th>
+					</tr>
+					<tr>
+						<td>{Math.round(upload_stats.progress * 100)}%</td>
+						<td>{stats.time_elapsed.toFixed(2)}s</td>
+						<td>{(stats.time_elapsed / stats.progress - stats.time_elapsed).toFixed(2)}s</td
+						>
+					</tr>
+				</tbody>
 			</table>
 		{/if}
 	</div>
@@ -138,7 +142,7 @@ SPDX-License-Identifier: MPL-2.0
 		<span
 			class="h-full transition-all absolute rounded bg-black bg-opacity-50"
 			style="width: {100 - stats.progress * 100}%"
-		/>
+		></span>
 	</div>
 	<div class="flex justify-center">
 		<BrownButton on:click={compress_music} disabled={status !== Status.Idle}

@@ -185,6 +185,7 @@ SPDX-License-Identifier: MPL-2.0
 								placeholder={$t('dashboard.search_for_own_quizzes')}
 							/>
 							<button
+								aria-label="Clear search"
 								onclick={() => {
 									search_term = '';
 									items_to_show = all_items;

@@ -89,7 +89,7 @@ SPDX-License-Identifier: MPL-2.0
 <div class="h-full">
 	<div class="grid grid-cols-6 overflow-hidden h-full">
 		<div class="border-r-4 border-black h-full">
-			<img src={image_url} />
+			<img src={image_url} alt="Avatar preview" />
 		</div>
 		<div class="col-start-2 col-end-7 overflow-scroll">
 			<div class="flex pl-2">
@@ -114,6 +114,7 @@ SPDX-License-Identifier: MPL-2.0
 				{#each Array.from(Array(item_count[data_keys[index]]).keys()) as key}
 					<button
 						class="hover:opacity-80 transition-all"
+						aria-label="Select avatar option"
 						onclick={() => {
 							data[data_keys[index]] = key;
 							if (index < 11) {
@@ -126,6 +127,7 @@ SPDX-License-Identifier: MPL-2.0
 					>
 						<img
 							src={get_image_url({ ...data, [data_keys[index]]: key })}
+							alt="Avatar option"
 							in:fade|global={{ duration: 100 }}
 						/>
 					</button>
@@ -146,6 +148,7 @@ SPDX-License-Identifier: MPL-2.0
 		<img
 			class="m-auto w-1/2 h-1/2 z-20"
 			src={get_image_url(data)}
+			alt="Selected avatar"
 			in:fly|global={{ delay: 500, duration: 4000, y: -500, easing: bounceOut }}
 		/>
 		<div class="m-auto grid grid-cols-2 gap-4" in:fade|global={{ delay: 3500 }}>

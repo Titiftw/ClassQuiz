@@ -181,6 +181,7 @@ SPDX-License-Identifier: MPL-2.0
 							<div class="flex items-center space-x-2">
 								<button
 									disabled={!totp_activated}
+									aria-label="Toggle password requirement"
 									onclick={() => {
 										user_data.require_password = !user_data.require_password;
 										save_password_required();
@@ -203,6 +204,7 @@ SPDX-License-Identifier: MPL-2.0
 							<div class="flex items-center space-x-2">
 								<button
 									disabled={!totp_activated}
+									aria-label="Toggle password requirement"
 									type="button"
 									onclick={() => {
 										user_data.require_password = !user_data.require_password;
