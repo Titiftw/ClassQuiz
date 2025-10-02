@@ -343,6 +343,6 @@ SPDX-License-Identifier: MPL-2.0
 
 <style lang="scss">
 	.btn-nav {
-		@apply text-lg font-medium px-3 text-gray-600 hover:text-green-600 py-1.5 transition-all duration-300;
+		@apply text-lg font-medium px-3 text-gray-600 hover:text-sky-600 py-1.5 transition-all duration-300;
 	}
 </style>

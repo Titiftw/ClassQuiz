@@ -20,12 +20,12 @@ SPDX-License-Identifier: MPL-2.0
 }
 
 .link-hover:hover {
-	color: #3b82f6;
+	color: #0ea5e9;
 }
 
 @layer utilities {
 	.normal-background {
-		@apply bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 dark:from-blue-800 dark:via-purple-800 dark:to-indigo-800;
+		@apply bg-gradient-to-r from-sky-400 via-blue-400 to-cyan-400 dark:from-sky-600 dark:via-blue-600 dark:to-cyan-600;
 	}
 
 	.modern-card {
@@ -33,10 +33,10 @@ SPDX-License-Identifier: MPL-2.0
 	}
 
 	.modern-button {
-		@apply px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-medium rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2;
+		@apply px-6 py-3 bg-gradient-to-r from-sky-500 to-blue-500 hover:from-sky-600 hover:to-blue-600 text-white font-medium rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-sky-400 focus:ring-offset-2;
 	}
 
 	.modern-input {
-		@apply w-full px-4 py-3 bg-white/80 dark:bg-gray-700/80 backdrop-blur-sm border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 placeholder-gray-500 dark:placeholder-gray-400;
+		@apply w-full px-4 py-3 bg-white/90 dark:bg-gray-700/90 backdrop-blur-sm border border-sky-300 dark:border-sky-600 rounded-lg focus:ring-2 focus:ring-sky-400 focus:border-transparent transition-all duration-200 placeholder-gray-500 dark:placeholder-gray-400;
 	}
 }

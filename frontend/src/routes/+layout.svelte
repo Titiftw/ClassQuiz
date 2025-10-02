@@ -112,14 +112,14 @@ SPDX-License-Identifier: MPL-2.0
 
 <style lang="scss">
 	:global(html:not(.dark)) {
-		background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+		background: linear-gradient(135deg, #e0f2fe 0%, #b3e5fc 50%, #81d4fa 100%);
 		background-attachment: fixed;
 		min-height: 100vh;
 		color: #1f2937;
 	}
 
 	:global(html.dark) {
-		background: linear-gradient(135deg, #1e3a8a 0%, #3730a3 50%, #581c87 100%);
+		background: linear-gradient(135deg, #0c4a6e 0%, #0369a1 50%, #0284c7 100%);
 		background-attachment: fixed;
 		min-height: 100vh;
 		color: #f9fafb;
